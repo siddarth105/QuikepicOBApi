@@ -7,6 +7,7 @@ import javax.ws.rs.Produces;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,6 +20,7 @@ private final Log log = LogFactory.getLog(getClass());
 	@Path("/validateAccount")
 	@Consumes("application/json")
 	@Produces("application/json")
+	@PreAuthorize("hasAuthority('FOO_WRITE')")
 	public String validateAccount() {
 		this.log.info("BankCheckResource :: getCallDetails");
 		return "Your Account is Valid";
